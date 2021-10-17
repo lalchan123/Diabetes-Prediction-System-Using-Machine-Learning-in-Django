@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction System</title>
+    <style>
+        body {
+            background-image: url("{% static 'img3.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .main{
+            position: fixed;
+            top: 140px;
+            left: 410px;
+            width: 550px;
+            background-color:#ffffff;
+            border-radius: 10px;
+            align-items: center;
+            padding: 5%;
+        }
+        h1{
+            color: #0086b3;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        input[type=submit]{
+            background-color: #a10b18;
+            border: 2px;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 5%;
+            font-weight: bold;
+        }
+        a{
+            background-color: #a10b18;
+            border: 2px;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 5%;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div align="center" class="main">
+        <h1>Please enter the following informations:</h1>
+        <form action="{% url 'result' %}" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td align="right">Pregnancies: </td>
+                    <td align="left"><input type="text" name="n1" required></td>
+                </tr>
+                <tr>
+                    <td align="right">Glucose: </td>
+                    <td align="left"><input type="text" name="n2" required></td>
+                </tr>
+                <tr>
+                    <td align="right">BloodPressure: </td>
+                    <td align="left"><input type="text" name="n3" required></td>
+                </tr>
+                <tr>
+                    <td align="right">SkinThickness: </td>
+                    <td align="left"><input type="text" name="n4" required></td>
+                </tr>
+                <tr>
+                    <td align="right">Insulin: </td>
+                    <td align="left"><input type="text" name="n5" required></td>
+                </tr>
+                <tr>
+                    <td align="right">BMI: </td>
+                    <td align="left"><input type="text" name="n6" required></td>
+                </tr>
+                <tr>
+                    <td align="right">DiabetesPedigreeFunction: </td>
+                    <td align="left"><input type="text" name="n7" required></td>
+                </tr>
+                <tr>
+                    <td align="right">Age: </td>
+                    <td align="left"><input type="text" name="n8" required></td>
+                </tr>
+            </table>
+            <div class="row">
+                <input type="submit" value="PREDICT">
+                <a href="{% url 'recordData' %}">Show Data</a>
+            </div>
+        </form>
+        <br>
+        Result: {{result}}
+        
+    </div>
+</body>
+
+</html>
